@@ -1,4 +1,5 @@
 load("@bazel_skylib//lib:paths.bzl", "paths")
+load("//tools/build_defs:fb_xplat_cxx_library.bzl", "fb_xplat_cxx_library")
 load("//tools/build_defs:fb_xplat_genrule.bzl", "fb_xplat_genrule")
 load("//tools/build_defs:type_defs.bzl", "is_list", "is_string")
 load(":build_variables.bzl", "aten_native_source_list")
@@ -219,6 +220,14 @@ TEMPLATE_SOURCE_LIST = [
     "torch/csrc/jit/runtime/register_prim_ops.cpp",
     "torch/csrc/jit/runtime/register_special_ops.cpp",
 ] + aten_native_source_list
+
+# the basic xplat library
+def pt_xplat_cxx_library(extra_flags = {}, **kwargs):
+    fb_xplat_cxx_library(
+        compiler_flags = get_pt_compiler_flags() + extra_flags.get("compiler_flags", []),
+        exported_preprocessor_flags = get_pt_preprocessor_flags() + extra_flags.get("exported_preprocessor_flags", []),
+        **kwargs
+    )
 
 # For selective build, we can lump the CPU and CPU kernel sources altogether
 # because there is only ever one vectorization variant that is compiled
