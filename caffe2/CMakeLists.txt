@@ -587,6 +587,15 @@ if(NOT INTERN_BUILD_MOBILE OR NOT BUILD_CAFFE2_MOBILE)
        ${TORCH_SRC_DIR}/csrc/jit/mobile/train/random.cpp
        ${TORCH_SRC_DIR}/csrc/jit/mobile/train/sequential.cpp
        ${TORCH_SRC_DIR}/csrc/jit/mobile/upgrader_mobile.cpp
+       ${TORCH_SRC_DIR}/csrc/api/src/data/datasets/mnist.cpp
+      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/distributed.cpp
+      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/random.cpp
+       ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/sequential.cpp
+      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/stream.cpp
+       ${TORCH_SRC_DIR}/csrc/api/src/serialize/input-archive.cpp
+       ${TORCH_SRC_DIR}/csrc/api/src/serialize/output-archive.cpp
+       ${TORCH_SRC_DIR}/csrc/jit/serialization/export_bytecode.cpp
+       ${TORCH_SRC_DIR}/csrc/jit/serialization/export_module.cpp
        )
     list(APPEND TORCH_SRCS ${MOBILE_SRCS})
     list(APPEND TORCH_SRCS ${LITE_EAGER_SYMOBLICATION_SRCS})
@@ -1074,11 +1083,11 @@ if(BUILD_LITE_INTERPRETER AND SELECTED_OP_LIST)
 endif()
 
 if(NOT INTERN_BUILD_MOBILE OR NOT BUILD_CAFFE2_MOBILE)
-  if(NOT NO_API)
+  #  if(NOT NO_API)
     target_include_directories(torch_cpu PRIVATE
       ${TORCH_SRC_DIR}/csrc/api
       ${TORCH_SRC_DIR}/csrc/api/include)
-  endif()
+  #  endif()
 
   if(BUILD_SPLIT_CUDA AND MSVC)
     # -INCLUDE is used to ensure torch_cuda_cpp/cu are linked against in a project that relies on them.
