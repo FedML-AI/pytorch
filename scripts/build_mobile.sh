@@ -18,7 +18,7 @@ CMAKE_ARGS=()
 CMAKE_ARGS+=("-DCMAKE_PREFIX_PATH=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')")
 CMAKE_ARGS+=("-DPYTHON_EXECUTABLE=$(python -c 'import sys; print(sys.executable)')")
 CMAKE_ARGS+=("-DBUILD_CUSTOM_PROTOBUF=OFF")
-CMAKE_ARGS+=("-DBUILD_SHARED_LIBS=OFF")
+CMAKE_ARGS+=("-DBUILD_SHARED_LIBS=ON")
 # custom build with selected ops
 if [ -n "${SELECTED_OP_LIST}" ]; then
   SELECTED_OP_LIST="$(cd $(dirname $SELECTED_OP_LIST); pwd -P)/$(basename $SELECTED_OP_LIST)"
