@@ -177,7 +177,7 @@ option(BUILD_TENSOREXPR_BENCHMARK "Build C++ binaries for tensorexpr benchmarks 
 option(BUILD_MOBILE_BENCHMARK "Build C++ test binaries for mobile (ARM) targets(need gtest and gbenchmark)" OFF)
 option(BUILD_MOBILE_TEST "Build C++ test binaries for mobile (ARM) targets(need gtest and gbenchmark)" OFF)
 option(BUILD_JNI "Build JNI bindings" OFF)
-option(BUILD_MOBILE_AUTOGRAD "Build autograd function in mobile build (in development)" OFF)
+option(BUILD_MOBILE_AUTOGRAD "Build autograd function in mobile build (in development)" ON)
 cmake_dependent_option(
     INSTALL_TEST "Install test binaries if BUILD_TEST is on" ON
     "BUILD_TEST" OFF)
@@ -329,7 +329,7 @@ cmake_dependent_option(
 option(USE_TBB "Use TBB (Deprecated)" OFF)
 cmake_dependent_option(
     USE_SYSTEM_TBB "Use system-provided Intel TBB." OFF "USE_TBB" OFF)
-option(ONNX_ML "Enable traditional ONNX ML API." ON)
+option(ONNX_ML "Enable traditional ONNX ML API." OFF)
 option(HAVE_SOVERSION "Whether to add SOVERSION to the shared objects" OFF)
 option(BUILD_LIBTORCH_CPU_WITH_DEBUG "Enable RelWithDebInfo for libtorch_cpu target only" OFF)
 cmake_dependent_option(
@@ -605,7 +605,7 @@ if(INTERN_BUILD_MOBILE AND NOT BUILD_CAFFE2_MOBILE)
   set(INTERN_USE_EIGEN_BLAS ON)
   # Disable developing mobile interpreter for actual mobile build.
   # Enable it elsewhere to capture build error.
-  set(INTERN_DISABLE_MOBILE_INTERP ON)
+  set(INTERN_DISABLE_MOBILE_INTERP OFF)
 endif()
 
 # ---[ Utils
