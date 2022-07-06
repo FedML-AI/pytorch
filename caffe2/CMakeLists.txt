@@ -587,15 +587,12 @@ if(NOT INTERN_BUILD_MOBILE OR NOT BUILD_CAFFE2_MOBILE)
        ${TORCH_SRC_DIR}/csrc/jit/mobile/train/random.cpp
        ${TORCH_SRC_DIR}/csrc/jit/mobile/train/sequential.cpp
        ${TORCH_SRC_DIR}/csrc/jit/mobile/upgrader_mobile.cpp
-       ${TORCH_SRC_DIR}/csrc/api/src/data/datasets/mnist.cpp
-      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/distributed.cpp
-      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/random.cpp
-       ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/sequential.cpp
-      #  ${TORCH_SRC_DIR}/csrc/api/src/data/samplers/stream.cpp
+       # ${TORCH_SRC_DIR}/csrc/api/src/data/datasets/mnist.cpp
        ${TORCH_SRC_DIR}/csrc/api/src/serialize/input-archive.cpp
        ${TORCH_SRC_DIR}/csrc/api/src/serialize/output-archive.cpp
        ${TORCH_SRC_DIR}/csrc/jit/serialization/export_bytecode.cpp
        ${TORCH_SRC_DIR}/csrc/jit/serialization/export_module.cpp
+       ${TORCH_SRC_DIR}/csrc/jit/api/module_save.cpp
        )
     list(APPEND TORCH_SRCS ${MOBILE_SRCS})
     list(APPEND TORCH_SRCS ${LITE_EAGER_SYMOBLICATION_SRCS})
