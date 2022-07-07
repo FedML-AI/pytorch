@@ -1080,11 +1080,11 @@ if(BUILD_LITE_INTERPRETER AND SELECTED_OP_LIST)
 endif()
 
 if(NOT INTERN_BUILD_MOBILE OR NOT BUILD_CAFFE2_MOBILE)
-  #  if(NOT NO_API)
+   if(NOT NO_API)
     target_include_directories(torch_cpu PRIVATE
       ${TORCH_SRC_DIR}/csrc/api
       ${TORCH_SRC_DIR}/csrc/api/include)
-  #  endif()
+   endif()
 
   if(BUILD_SPLIT_CUDA AND MSVC)
     # -INCLUDE is used to ensure torch_cuda_cpp/cu are linked against in a project that relies on them.
